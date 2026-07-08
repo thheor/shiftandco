@@ -1,0 +1,14 @@
+{
+  "name": "shiftnco",
+  "compatibility_date": "2026-07-06",
+  "assets": {
+    "directory": "./dist/client",
+    "not_found_handling": "single-page-application",
+  },
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "shiftnco",
+    },
+  ],
+}
