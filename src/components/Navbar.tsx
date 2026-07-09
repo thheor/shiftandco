@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { Logo } from "@/components/Logo";
 import {
@@ -9,7 +9,7 @@ import {
   ShoppingBag,
 } from "lucide-react";
 import { SearchProduct } from "@/components/SearchProduct";
-// import { outsideClick } from "@/lib/utils";
+import { useOutsideClick } from "@/hooks/hooks.ts";
 
 interface Links {
   title: string;
@@ -71,24 +71,12 @@ export function Navbar() {
   const [isWomanLink, setIsWomanLink] = useState<boolean>(false);
   const [isManLink, setIsManLink] = useState<boolean>(false);
   const [isSearch, setIsSearch] = useState<boolean>(false);
-  const navbarRef = useRef(null);
-  // const navbarOutsideClick = outsideClick(navbarRef);
 
-  useEffect(() => {
-    function handleCLickOutside(event: MouseEvent) {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-        if (isWomanLink) {
-          setIsWomanLink(false);
-        }
-        if (isManLink) {
-          setIsManLink(false);
-        }
-      }
-    }
-
-    document.addEventListener("mousedown", handleCLickOutside);
-    return () => document.removeEventListener("mousedown", handleCLickOutside);
-  }, []);
+  const handleCloseNavbar = () => {
+    setIsManLink(false);
+    setIsWomanLink(false);
+    setIsSearch(false);
+  };
 
   const handleWomanLink = () => {
     if (isManLink) {
@@ -110,12 +98,17 @@ export function Navbar() {
     setIsManLink(!isManLink);
   };
 
-  const handleClose = (value: boolean) => {
+  const handleCloseSearch = (value: boolean) => {
     setIsSearch(!value);
   };
 
+  const navRef = useOutsideClick<HTMLUListElement>(handleCloseNavbar);
+
   return (
-    <nav className="relative w-screen border-b border-black/10 z-50">
+    <nav
+      ref={navRef}
+      className="relative w-screen border-b border-black/10 z-50"
+    >
       <div className="grid grid-cols-3 place-items-center px-42 w-full h-16 bg-white relative z-20">
         <ul className="flex gap-4 justify-self-start w-60 lg:w-100">
           <li
@@ -172,7 +165,6 @@ export function Navbar() {
         </ul>
       </div>
       <ul
-        ref={navbarRef}
         className={`${isWomanLink ? "translate-y-0 shadow-sm" : " -translate-y-full pointer-events-none"} transition duration-200 ease-in-out absolute flex flex-col gap-1 w-full px-42 py-6 border-t border-black/20 bg-white z-1`}
       >
         {womanLinks.map((el, index) => (
@@ -187,7 +179,6 @@ export function Navbar() {
         ))}
       </ul>
       <ul
-        ref={navbarRef}
         className={`${isManLink ? "translate-y-0 shadow-sm" : " -translate-y-full pointer-events-none"} transition duration-200 ease-in-out absolute flex flex-col gap-1 w-full px-42 py-6 border-t border-black/20 bg-white z-1`}
       >
         {manLinks.map((el, index) => (
@@ -204,7 +195,7 @@ export function Navbar() {
       <div
         className={`${isSearch ? "block -translate-y-15" : "-translate-y-70"} absolute transition-transform duration-400 ease-in w-full bg-background shadow-md px-42 py-8 z-100`}
       >
-        <SearchProduct handleClose={handleClose} />
+        <SearchProduct handleClose={handleCloseSearch} />
       </div>
     </nav>
   );

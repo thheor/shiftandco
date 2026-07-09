@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Field } from "@/components/ui/field";
 import {
   InputGroup,
@@ -38,7 +37,7 @@ export function SearchProduct({ handleClose }: { handleClose: HandleClose }) {
         <ul className="flex gap-4 pt-2">
           {data.map((el) => (
             <li key={el}>
-              <TrendingProducts name={el} />
+              <TrendingProductsButton name={el} />
             </li>
           ))}
         </ul>
@@ -47,7 +46,7 @@ export function SearchProduct({ handleClose }: { handleClose: HandleClose }) {
   );
 }
 
-function TrendingProducts({ name }: { name: string }) {
+export function TrendingProductsButton({ name }: { name: string }) {
   return (
     <Button
       variant="outline"
