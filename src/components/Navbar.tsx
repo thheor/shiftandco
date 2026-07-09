@@ -8,6 +8,7 @@ import {
   User,
   ShoppingBag,
 } from "lucide-react";
+import { SearchProduct } from "@/components/SearchProduct";
 // import { outsideClick } from "@/lib/utils";
 
 interface Links {
@@ -67,8 +68,9 @@ const manLinks: Links[] = [
 ];
 
 export function Navbar() {
-  const [isWomanLink, setIsWomanLink] = useState(false);
-  const [isManLink, setIsManLink] = useState(false);
+  const [isWomanLink, setIsWomanLink] = useState<boolean>(false);
+  const [isManLink, setIsManLink] = useState<boolean>(false);
+  const [isSearch, setIsSearch] = useState<boolean>(false);
   const navbarRef = useRef(null);
   // const navbarOutsideClick = outsideClick(navbarRef);
 
@@ -88,7 +90,7 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleCLickOutside);
   }, []);
 
-  const hanldeWomanLink = () => {
+  const handleWomanLink = () => {
     if (isManLink) {
       setIsManLink(false);
       setTimeout(() => setIsWomanLink(!isWomanLink), 100);
@@ -98,7 +100,7 @@ export function Navbar() {
     setIsWomanLink(!isWomanLink);
   };
 
-  const hanldeManLink = () => {
+  const handleManLink = () => {
     if (isWomanLink) {
       setIsWomanLink(false);
       setTimeout(() => setIsManLink(!isManLink), 100);
@@ -108,12 +110,16 @@ export function Navbar() {
     setIsManLink(!isManLink);
   };
 
+  const handleClose = (value: boolean) => {
+    setIsSearch(!value);
+  };
+
   return (
     <nav className="relative w-screen border-b border-black/10 z-50">
       <div className="grid grid-cols-3 place-items-center px-42 w-full h-16 bg-white relative z-20">
         <ul className="flex gap-4 justify-self-start w-60 lg:w-100">
           <li
-            onClick={hanldeWomanLink}
+            onClick={handleWomanLink}
             className="flex items-center text-foreground/80 text-sm cursor-pointer"
           >
             WOMAN{" "}
@@ -126,7 +132,7 @@ export function Navbar() {
             </span>
           </li>
           <li
-            onClick={hanldeManLink}
+            onClick={handleManLink}
             className="flex items-center text-foreground/80 text-sm cursor-pointer"
           >
             MAN
@@ -152,7 +158,10 @@ export function Navbar() {
         </Link>
         <ul className="flex gap-4 justify-self-end ">
           <li className="m-auto">
-            <Search className="w-5 h-5 text-foreground/70" />
+            <Search
+              onClick={() => setIsSearch(true)}
+              className="w-5 h-5 text-foreground/70 cursor-pointer"
+            />
           </li>
           <li className="m-auto">
             <User className="w-5 h-5 text-foreground/70" />
@@ -192,6 +201,11 @@ export function Navbar() {
           </li>
         ))}
       </ul>
+      <div
+        className={`${isSearch ? "block -translate-y-15" : "-translate-y-70"} absolute transition-transform duration-400 ease-in w-full bg-background shadow-md px-42 py-8 z-100`}
+      >
+        <SearchProduct handleClose={handleClose} />
+      </div>
     </nav>
   );
 }
