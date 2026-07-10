@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { SearchProduct } from "@/components/SearchProduct";
 import { useOutsideClick } from "@/hooks/hooks.ts";
+import { useDataProductContext } from "@/contexts/contexts";
 
 interface Links {
   title: string;
@@ -72,6 +73,7 @@ export function Navbar() {
   const [isManLink, setIsManLink] = useState<boolean>(false);
   const [isSearch, setIsSearch] = useState<boolean>(false);
 
+  const product = useDataProductContext();
   const handleCloseNavbar = () => {
     setIsManLink(false);
     setIsWomanLink(false);

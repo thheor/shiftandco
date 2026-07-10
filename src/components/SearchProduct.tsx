@@ -1,3 +1,4 @@
+import { type ComponentProps } from "react";
 import { Field } from "@/components/ui/field";
 import {
   InputGroup,
@@ -46,12 +47,16 @@ export function SearchProduct({ handleClose }: { handleClose: HandleClose }) {
   );
 }
 
-export function TrendingProductsButton({ name }: { name: string }) {
+export function TrendingProductsButton({
+  name,
+  ...props
+}: { name: string } & ComponentProps<"button">) {
   return (
     <Button
       variant="outline"
       size="sm"
       className="flex rounded-2xl text-foreground/70 cursor-pointer"
+      {...props}
     >
       <Search size={24} />
       {name}
