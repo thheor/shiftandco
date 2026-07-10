@@ -1,0 +1,144 @@
+{
+  "products": {
+    "t-shirts": [
+      {
+        "id": "a01ef41d-f8a1-4505-8e11-7d52665c074a",
+        "name": "Cotton Volume Sleeve Shirt",
+        "price": "389.000",
+        "gender": "Woman",
+        "variant": [
+          {
+            "color": "blue",
+            "quantity": 8,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/cotton%20volume%20sleeve%20shirt%20white.avif"
+          },
+          {
+            "color": "white",
+            "quantity": 12,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/cotton%20volume%20sleeve%20shirt%20blue.avif"
+          },
+          {
+            "color": "brown",
+            "quantity": 3,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/cotton%20volume%20sleeve%20shirt%20brown.avif"
+          }
+        ]
+      },
+      {
+        "id": "83aacb83-132d-4f0c-842d-997976a0eca8",
+        "name": "Denim Boxy Shirt",
+        "price": "389.000",
+        "gender": "Woman",
+        "variant": [
+          {
+            "color": "black",
+            "quantity": 8,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/denim%20boxy%20shirt%20black.avif"
+          },
+          {
+            "color": "blue",
+            "quantity": 12,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/denim%20boxy%20shirt%20blue.avif"
+          },
+          {
+            "color": "navy",
+            "quantity": 3,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/denim%20boxy%20shirt%20navy.avif"
+          }
+        ]
+      },
+      {
+        "id": "65f318c2-74c4-4eff-a409-d1b8c979792e",
+        "name": "Oxford Boxy Cropped Shirt",
+        "price": "389.000",
+        "gender": "Woman",
+        "variant": [
+          {
+            "color": "blue",
+            "quantity": 8,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/oxford%20boxy%20cropped%20shirt%20blue.avif"
+          },
+          {
+            "color": "light green",
+            "quantity": 12,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/oxford%20boxy%20cropped%20shirt%20light%20green.avif"
+          },
+          {
+            "color": "navy",
+            "quantity": 3,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/oxford%20boxy%20cropped%20shirt%20white.avif"
+          }
+        ]
+      },
+      {
+        "id": "6852a0b6-e240-41e1-a18e-e18e86695196",
+        "name": "Premium Linen Shirt",
+        "price": "389.000",
+        "gender": "Woman",
+        "variant": [
+          {
+            "color": "blue",
+            "quantity": 8,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20blue.avif"
+          },
+          {
+            "color": "neutral",
+            "quantity": 12,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20natural.avif"
+          },
+          {
+            "color": "pink",
+            "quantity": 3,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20pink.avif"
+          }
+        ]
+      },
+      {
+        "id": "bd5fe870-acdb-43de-8d99-a764eeb2e42f",
+        "name": "Premium Linen Shirt Striped",
+        "price": "389.000",
+        "gender": "Woman",
+        "variant": [
+          {
+            "color": "blue",
+            "quantity": 8,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20beige%20striped.avif"
+          },
+          {
+            "color": "neutral",
+            "quantity": 12,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20striped%20blue.avif"
+          },
+          {
+            "color": "pink",
+            "quantity": 3,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20striped%20pink.avif"
+          }
+        ]
+      },
+      {
+        "id": "5ffcced5-90d1-4dba-9a5f-a00a8503842b",
+        "name": "Premium Linen Skipper Boxy Shirt",
+        "price": "389.000",
+        "gender": "Woman",
+        "variant": [
+          {
+            "color": "blue",
+            "quantity": 8,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20skipper%20boxy%20shirt%20blue.avif"
+          },
+          {
+            "color": "brown",
+            "quantity": 12,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20skipper%20boxy%20shirt%20brown.avif"
+          },
+          {
+            "color": "pink",
+            "quantity": 3,
+            "image": "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20skipper%20boxy%20shirt%20pink.avif"
+          }
+        ]
+      }
+    ]
+  }
+}
