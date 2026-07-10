@@ -1,6 +1,9 @@
+import data from "@/data/data.json";
+import { type DataProduct } from "@/lib/definitions";
 import { CollectionsLayout } from "@/layouts/CollectionsLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { CollectionPagination } from "@/components/Pagination";
+import { Facets } from "@/components/Facets";
 
 const links = [
   {
@@ -73,70 +76,30 @@ const availability = [
   },
 ];
 
-const products = [
-  {
-    name: "Cotton Volume Sleeve Shirt",
-    images: [
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/cotton%20volume%20sleeve%20shirt%20white.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/cotton%20volume%20sleeve%20shirt%20blue.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/cotton%20volume%20sleeve%20shirt%20brown.avif",
-    ],
-    price: "319.000",
-    href: "/woman",
-  },
-  {
-    name: "Denim Boxy Shirt",
-    images: [
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/denim%20boxy%20shirt%20black.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/denim%20boxy%20shirt%20blue.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/denim%20boxy%20shirt%20navy.avif",
-    ],
-    price: "389.000",
-    href: "/woman",
-  },
-  {
-    name: "Oxford Boxy Cropped Shirt",
-    images: [
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/oxford%20boxy%20cropped%20shirt%20blue.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/oxford%20boxy%20cropped%20shirt%20light%20green.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/oxford%20boxy%20cropped%20shirt%20white.avif",
-    ],
-    price: "219.000",
-    href: "/woman",
-  },
-  {
-    name: "Premium Linen Shirt",
-    images: [
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20blue.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20natural.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20pink.avif",
-      "https://pub-296024e8d908449dafd4ac479c1657c0.r2.dev/collections/woman/t-shirts/premium%20linen%20shirt%20red.avif",
-    ],
-    price: "219.000",
-    href: "/woman",
-  },
-];
+const dataProducts = data.products["t-shirts"] as unknown as DataProduct[];
 
 export function TShirts() {
   return (
     <CollectionsLayout
+      title="Woman | ShiftnCo Woman T-Shirts & Blouse"
       type="T-Shirts & Blouse"
       links={links}
-      sortOptions={sortOptions}
-      products="100"
-      availability={availability}
     >
-      <title>Woman | ShiftnCo Woman T-Shirts & Blouse</title>
       <section>
+        <Facets
+          availability={availability}
+          sortOptions={sortOptions}
+          products={100}
+        />
         <div className="grid grid-cols-4 gap-2 place-items-stretch">
-          {products.map((product) => (
+          {dataProducts.map((product: DataProduct) => (
             <ProductCard
-              key={product.href}
+              key={product.id}
               className="mb-10"
               name={product.name}
               price={product.price}
-              images={product.images}
-              href={product.href}
+              variant={product.variant}
+              href={product.name}
             />
           ))}
         </div>

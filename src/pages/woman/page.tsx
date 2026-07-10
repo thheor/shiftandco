@@ -1,3 +1,4 @@
+import { useDataProductContext } from "@/contexts/contexts";
 import { Link } from "react-router";
 import { MainLayout } from "@/layouts/MainLayout";
 import { ArrowRight } from "lucide-react";
@@ -30,6 +31,8 @@ const collections = [
 ];
 
 export function Woman() {
+  const products = useDataProductContext();
+
   return (
     <MainLayout title="SHIFTNCO | Collections" className="px-42 ">
       <h1 className="font-semibold text-2xl mt-8 ">Collections</h1>
