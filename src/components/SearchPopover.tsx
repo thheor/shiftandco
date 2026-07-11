@@ -1,4 +1,5 @@
 import { type ComponentProps } from "react";
+import { useSearchParams } from "react-router";
 import { TrendingProductsButton } from "@/components/SearchProduct";
 
 export function SearchPopover({
@@ -12,6 +13,16 @@ export function SearchPopover({
   clickSuggestion: (value: string) => void;
   className?: string;
 }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleSearch = (term: string) => {
+    if (term) {
+      setSearchParams({ keyword: term });
+    } else {
+      setSearchParams();
+    }
+  };
+
   return (
     <div
       className={`${className} px-8 pt-2 pb-2 bg-background shadow-md rounded-3xl border border-muted-foreground/30 z-100`}
@@ -20,7 +31,7 @@ export function SearchPopover({
       <ul className={`flex gap-4 py-4 border-t border-t-foreground/30`}>
         {trendings.map((trending) => (
           <li key={trending}>
-            <SearchButton
+            <TrendingProductsButton
               name={trending}
               onMouseDown={(e) => {
                 e.preventDefault();

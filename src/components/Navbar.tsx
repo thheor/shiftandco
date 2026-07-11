@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router";
 import { Logo } from "@/components/Logo";
 import {
   ChevronDown,
@@ -72,6 +72,19 @@ export function Navbar() {
   const [isWomanLink, setIsWomanLink] = useState<boolean>(false);
   const [isManLink, setIsManLink] = useState<boolean>(false);
   const [isSearch, setIsSearch] = useState<boolean>(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (isSearch) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSearch]);
 
   const product = useDataProductContext();
   const handleCloseNavbar = () => {
@@ -152,7 +165,9 @@ export function Navbar() {
           <Logo className="m-auto" />
         </Link>
         <ul className="flex gap-4 justify-self-end ">
-          <li className="m-auto">
+          <li
+            className={`${!location.pathname.includes("search") ? "block" : "hidden"} m-auto`}
+          >
             <Search
               onClick={() => setIsSearch(true)}
               className="w-5 h-5 text-foreground/70 cursor-pointer"
@@ -167,7 +182,7 @@ export function Navbar() {
         </ul>
       </div>
       <ul
-        className={`${isWomanLink ? "translate-y-0 shadow-sm" : " -translate-y-full pointer-events-none"} transition duration-200 ease-in-out absolute flex flex-col gap-1 w-full px-42 py-6 border-t border-black/20 bg-white z-1`}
+        className={`${isWomanLink ? "translate-y-0 shadow-sm" : "-translate-y-full pointer-events-none"} transition duration-200 ease-in-out absolute flex flex-col gap-1 w-full px-42 py-6 border-t border-black/20 bg-white z-1`}
       >
         {womanLinks.map((el, index) => (
           <li key={index}>
@@ -181,7 +196,7 @@ export function Navbar() {
         ))}
       </ul>
       <ul
-        className={`${isManLink ? "translate-y-0 shadow-sm" : " -translate-y-full pointer-events-none"} transition duration-200 ease-in-out absolute flex flex-col gap-1 w-full px-42 py-6 border-t border-black/20 bg-white z-1`}
+        className={`${isManLink ? "translate-y-0 shadow-sm" : "-translate-y-full pointer-events-none"} transition duration-200 ease-in-out absolute flex flex-col gap-1 w-full px-42 py-6 border-t border-black/20 bg-white z-1`}
       >
         {manLinks.map((el, index) => (
           <li key={index}>
@@ -195,9 +210,13 @@ export function Navbar() {
         ))}
       </ul>
       <div
-        className={`${isSearch ? "block -translate-y-15" : "-translate-y-70"} absolute transition-transform duration-400 ease-in w-full bg-background shadow-md px-42 py-8 z-100`}
+        className={`${isSearch ? "block opacity-100" : "opacity-0 invisible"} fixed inset-0 bg-foreground/30 backdrop-blur-md transition-all duration-300 ease-in z-90`}
+        onClick={() => setIsSearch(false)}
+      ></div>
+      <div
+        className={`${isSearch ? "block opacity-100 " : "invisible opacity-0"} absolute top-0 transition-all duration-300 ease-in w-full bg-background shadow-md px-42 py-8 z-100`}
       >
-        <SearchProduct handleClose={handleCloseSearch} />
+        <SearchProduct handleClose={handleCloseSearch} isSearch={isSearch} />
       </div>
     </nav>
   );
