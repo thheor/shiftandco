@@ -2,6 +2,9 @@ import { HomePage } from "@/pages/Homepage";
 import { TShirts } from "@/pages/woman/t-shirts/page";
 import { Woman } from "@/pages/woman/page";
 import { SearchPage } from "@/pages/search/page";
+import { Login } from "@/pages/user/account/login/page";
+import { Register } from "@/pages/user/account/register/page";
+import { Profile } from "@/pages/user/account/profile/page";
 import { NotFound } from "@/404";
 import { DataProductContext } from "@/contexts/contexts";
 import data from "@/data/data.json";
@@ -27,6 +30,18 @@ const router = createBrowserRouter([
   {
     path: "/search",
     Component: SearchPage,
+  },
+  {
+    path: "/user/account/login",
+    Component: Login,
+  },
+  {
+    path: "/user/account/register",
+    Component: Register,
+  },
+  {
+    path: "/user/account/profile",
+    Component: Profile,
   },
   {
     path: "*",

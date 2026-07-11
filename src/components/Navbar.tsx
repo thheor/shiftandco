@@ -174,7 +174,9 @@ export function Navbar() {
             />
           </li>
           <li className="m-auto">
-            <User className="w-5 h-5 text-foreground/70" />
+            <Link to="/user/account/profile">
+              <User className="w-5 h-5 text-foreground/70" />
+            </Link>
           </li>
           <li className="m-auto">
             <ShoppingBag className="w-5 h-5 text-foreground/70" />
