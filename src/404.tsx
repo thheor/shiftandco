@@ -1,8 +1,10 @@
 import { MainLayout } from "./layouts/MainLayout";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
 export function NotFound() {
+  const navigate = useNavigate();
+
   return (
     <MainLayout
       title="ShiftnCO | Not Found Page"
@@ -15,9 +17,12 @@ export function NotFound() {
         <p className="text-center mt-2">
           Sorry, the page that you are looking for is not found.
         </p>
-        <Link to="/" className="mt-8">
-          <Button className="cursor-pointer">Continue shopping</Button>
-        </Link>
+        <Button
+          onClick={() => navigate(-1)}
+          className="cursor-pointer rounded-sm mt-8"
+        >
+          Continue shopping
+        </Button>
       </section>
     </MainLayout>
   );
