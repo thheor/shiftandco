@@ -1,22 +1,11 @@
 import express, { type Express } from "express";
+import routes from "./routes/index.ts";
 
 const app: Express = express();
 
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "Server is running",
-    timeStamp: new Date().toString(),
-  });
-});
+app.use(express.json());
 
-app.get("/test", (req, res) => {
-  res.redirect("/health");
-});
-
-app.get("/error", (req, res) => {
-  throw new Error("error bang");
-});
+app.use("/", routes);
 
 app.use((req, res) => {
   res.status(404).json({
